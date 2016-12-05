@@ -17,63 +17,53 @@ var port = process.env.PORT || 8080;        // set our port
 
 // ROUTES FOR OUR API
 // =============================================================================
-var router = express.Router(); // get an instance of the express Router
+// var router = express.Router(); // get an instance of the express Router
 
-router.use(function(req, res, next) {
-    // do logging
-    console.log('Something is happening.');
-    next(); // make sure we go to the next routes and don't stop here
-});
+// router.use(function(req, res, next) {
+//     // do logging
+//     console.log('Something is happening.');
+//     next(); // make sure we go to the next routes and don't stop here
+// });
 
-//  GET http://localhost:8080/api)
-router.get('/', function(req, res) {
-    res.json({ message: 'Home Page' });   
-});
+// //  GET http://localhost:8080/api)
+// router.get('/', function(req, res) {
+//     res.json({ message: 'Home Page' });   
+// });
 
-router.route('/users')
-	// create a user (accessed at POST http://localhost:8080/api/user)
-	.post(function(req, res) {
-		var user = new User({
-			name:{
-				first: "Pesho",
-				last: "Peshev"
-			}
-		});
-	    user.first = req.body.first;  // set the users name (comes from the request)
-	    user.last = req.body.last;  // set the users name (comes from the request)
+// router.route('/users')
 
-	    // save the user and check for errors
-		user.save(function(err) {
-			if (err)
-				res.send(err); 
-			res.json({ message: 'User created!' });
-		})
-	})     
-	.get(function(req, res) {
-		User.find(function(err, user) {
-	            if (err)
-	                res.send(err);
-	            res.json(user);
-	        });
-		
-	});
-	console.log("log after save")
+//   // create a user (accessed at POST http://localhost:8080/api/user)
+//   router.post('/users', function(req, res) {
+//     var user = new User({ 
+//       name:{
+//         first: "name",
+//         last: "lastname"
+//       },
+//         username: "name",
+//         password: "123"
+//     });
+//     user.first = req.body.first;  // set the users name (comes from the request)
+//     user.last = req.body.last;  // set the users name (comes from the request)
 
-	router.route('/user/:user_id')
-
-	    // get the user with that id (accessed at GET http://localhost:8080/api/user/:user_id)
-	    .get(function(req, res) {
-	        User.findById(req.params.user_id, function(err, user) {
-	            if (err)
-	                res.send(err);
-	            res.json(user);
-	        });
-	    });
-
+//     // save the user and check for errors
+//     user.save(function(err) {
+//       if (err)
+//         res.send(err); 
+//       res.json({ message: 'User created!' });
+//     })
+//   })     
+//   router.get('/users', function(req, res) {
+//     User.find(function(err, user) {
+//       if (err)
+//         res.send(err);
+//       res.json(user);
+//     })
+//   })
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
-app.use('/api', router);
+// app.use('/api', router);
+app.use('/api', require('./app/routes/api'));
 
 // START THE SERVER
 // =============================================================================

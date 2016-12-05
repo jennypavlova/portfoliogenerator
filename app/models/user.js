@@ -1,41 +1,24 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var passportLocalMongoose = require('passport-local-mongoose');
 
-var validateEmail = function(email) {
-    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return re.test(email)
-};
-
-var StudentSchema = new Schema({
+var userSchema = new Schema({
     name:{
 		first:{
-			type: String,
-	    	required: true
+			type: String
     	},
     	last: {
-    		type: String,
-	    	required: true
+    		type: String
 	    }
+    },
+    username: {
+        type: String
+    },
+    password: {
+        type: String
     }
-    // ,
-    // facultyNum:{
-    // 	type: Number,
-    // 	required: true
-    // },
-    // academicYear:{
-    // 	type: Number,
-    // 	required: true
-    // },
-    // specialty: String,
-    // disciplines: [{
-    // 	name: String,
-    // 	teachers: String,
-    // 	hours: Number
-    // }],
-    // payment: {
-    // 	amount: Number,
-    // 	date : Date
-    // }
 });
+// passportjs plugin
+userSchema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model('Student', StudentSchema);
+module.exports = mongoose.model('User', userSchema);
