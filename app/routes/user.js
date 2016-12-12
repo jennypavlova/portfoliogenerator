@@ -7,7 +7,7 @@ module.exports = function(router) {
 
   passport.use(new LocalStrategy(User.authenticate()));
 
-  router.post('/login', passport.authenticate(' local', {
+  router.post('/login', passport.authenticate('local', {
     successRedirect: '/portfolio',
     failureRedirect: '/login',
     failureFlash: false
@@ -42,12 +42,12 @@ module.exports = function(router) {
   //     res.json({ message: 'User created!' });
   //   })
   // })     
-  router.get('/users', function(req, res) {
-    User.find(function(err, user) {
-      if (err)
-        res.send(err);
-      res.json(user);
-    })
-  })
+  // router.get('/users', function(req, res) {
+  //   User.find(function(err, user) {
+  //     if (err)
+  //       res.send(err);
+  //     res.json(user);
+  //   })
+  // })
 
 }

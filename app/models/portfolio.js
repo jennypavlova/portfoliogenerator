@@ -1,24 +1,7 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-var PortfolioSchema = new Schema({
-    project :{
-		name: {
-			type: String,
-	    	//    required: true
-    	},
-        client: {
-            type: String
-        }
-    },
-	duration: {
-        from: {
-            type: Date
-        },
-        to: {
-            type: Date
-        }
-    }
+var portfolioschema = mongoose.Schema({
+    project : String
 });
 
-module.exports = mongoose.model('Portfolio', PortfolioSchema);
+module.exports = mongoose.model('Portfolio', portfolioschema);
