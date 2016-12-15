@@ -2,33 +2,40 @@
 var express = require('express');        
 var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
-var morgan = require('morgan'); // log requests to the console (express4)
-var methodOverride = require('method-override');  // simulate DELETE and PUT (express4)
-var User = require('./app/models/user.js');
+// log requests to the console (express4)
+var morgan = require('morgan'); 
+// simulate DELETE and PUT (express4)
+var methodOverride = require('method-override');
+var path = require('path')
+var config = require('./config.json')
 
 mongoose.connect('mongodb://127.0.0.1/users');
 
-var app = express();                 // define our app using express
+// define our app using express
+var app = express();                 
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/public'));
 app.use(methodOverride());
 
-var port = process.env.PORT || 8080;        // set our port
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'public')));
 
-// REGISTER OUR ROUTES -------------------------------
+// RETURN THE CLIENT VIEW
+app.get('/', function(req, res){
+  res.render('index', config.client);
+});
+
+// REGISTER OUR ROUTES
 // all of our routes will be prefixed with /api
 app.use('/api', require('./app/routes/api'));
 
-app.get('/', function(req, res) {
-    res.sendfile('./public/index.html'); // load our public/index.html file
-});
-
 // START THE SERVER
-// =============================================================================
+// set our port
+var port = process.env.PORT || 8080;
 app.listen(port);
 console.log('Server listen on port ' + port);

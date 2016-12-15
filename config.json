@@ -1,0 +1,16 @@
+{
+	"client": {
+		"title": "Portfolio app",
+		"scripts": [
+			"controllers/portfolio.js",
+			"controllers/register.js",
+			"controllers/login.js",
+			"services/user.js",
+			"services/flash.js"
+		],
+		"styles": [
+			""
+		]
+	},
+	"server": {}
+}

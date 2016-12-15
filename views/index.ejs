@@ -1,0 +1,38 @@
+<!-- public/views/index.html -->
+<!-- index.html -->
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="app">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title><%= title %></title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+    <% styles.forEach(function(style) { %>
+    <link rel="stylesheet" href="<%=style%>">
+    <% }); %>
+    <style>
+        html                    { overflow-y:scroll; }
+        #todo-list              { margin-bottom:30px; }
+    </style>
+
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+    <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular-route/angular-route.js"></script>
+    <script src="libs/angular-resource/angular-resource.js"></script>
+    <script src="app.js"></script>
+    <% scripts.forEach(function(script) { %>
+    <script src="<%=script%>"></script>
+    <% }); %>
+
+</head>
+<body>
+<ng-view></ng-view>
+</body>
+</html>
