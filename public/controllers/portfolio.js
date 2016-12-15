@@ -28,6 +28,7 @@ app.controller('PortfolioCtrl', function ($scope, $http) {
   $scope.deletePortfolio = function(id) {
     $http.delete('/api/portfolio/' + id)
     .then(function(res) {
+      console.log(res.data, id);
       $scope.portfolio = res.data;
       console.log(data);
     }, function(res) {

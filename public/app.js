@@ -53,25 +53,25 @@ var app = angular.module('app', ['ngResource', 'ngRoute'])
     //================================================
     // Define all the routes
     //================================================
-    $routeProvider 
-      .when('/', { 
+    $routeProvider
+      .when('/', {
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl'
-      }) 
-      .when('/portfolio', { 
-        templateUrl: 'views/portfolio.html', 
-        controller: 'PortfolioCtrl', 
-        // resolve: { 
-        //   loggedin: checkLoggedin 
-        // } 
-      }) 
-      .when('/login', { 
-        templateUrl: 'views/login.html', 
-        controller: 'LoginCtrl' 
-      }) 
-      .otherwise({ 
-        redirectTo: '/' 
-      }); 
+      })
+      .when('/portfolio', {
+        templateUrl: 'views/portfolio.html',
+        controller: 'PortfolioCtrl',
+        // resolve: {
+        //   loggedin: checkLoggedin
+        // }
+      })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
     //================================================
 
   }) // end of config()

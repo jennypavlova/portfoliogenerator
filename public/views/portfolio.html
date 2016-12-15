@@ -13,7 +13,7 @@
             <!-- LOOP OVER THE projects IN $scope.portfolio -->
             <div class="checkbox" ng-repeat="project in portfolio">
                 <label>
-                    <input type="checkbox" ng-click="deletePortfolio(portfolio)"> {{ project.project }}
+                    <input type="checkbox" ng-click="deletePortfolio(project._id)"> {{ project.project }}
                 </label>
             </div>
 
