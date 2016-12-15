@@ -31,7 +31,7 @@ var app = angular.module('app', ['ngResource', 'ngRoute'])
       return deferred.promise;
     };
     //================================================
-    
+
     //================================================
     // Add an interceptor for AJAX errors
     //================================================
@@ -56,7 +56,8 @@ var app = angular.module('app', ['ngResource', 'ngRoute'])
     $routeProvider
       .when('/', {
         templateUrl: 'views/register.html',
-        controller: 'RegisterCtrl'
+        controller: 'RegisterCtrl',
+        controllerAs: 'vm'
       })
       .when('/portfolio', {
         templateUrl: 'views/portfolio.html',
@@ -67,7 +68,8 @@ var app = angular.module('app', ['ngResource', 'ngRoute'])
       })
       .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        controllerAs: 'vm'
       })
       .otherwise({
         redirectTo: '/'

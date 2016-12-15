@@ -6,7 +6,7 @@ var User = require('../models/user');
 module.exports = function(router) {
 
   passport.use(new LocalStrategy(User.authenticate()));
-  // route to log in 
+  // route to log in
   router.post('/login', passport.authenticate('local', {
     successRedirect: '/portfolio',
     failureRedirect: '/login',
@@ -22,13 +22,13 @@ module.exports = function(router) {
         return next();
       });
   });
-  // route to test if the user is logged in or not 
-  router.get('/loggedin', function(req, res) { 
-    res.send(req.isAuthenticated() ? req.user : '0'); 
-  }); 
-  // route to log out 
-  router.post('/logout', function(req, res){ 
-    req.logOut(); 
-    res.send(200); 
+  // route to test if the user is logged in or not
+  router.get('/loggedin', function(req, res) {
+    res.send(req.isAuthenticated() ? req.user : '0');
+  });
+  // route to log out
+  router.post('/logout', function(req, res){
+    req.logOut();
+    res.send(200);
   });
 }
