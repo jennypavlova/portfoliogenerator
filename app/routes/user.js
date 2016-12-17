@@ -8,7 +8,7 @@ module.exports = function(router) {
   passport.use(new LocalStrategy(User.authenticate()));
   // route to log in
   router.post('/login', passport.authenticate('local', {
-    successRedirect: '/portfolio',
+    successRedirect: '/#!/portfolio',
     failureRedirect: '/login',
     failureFlash: false
   }));

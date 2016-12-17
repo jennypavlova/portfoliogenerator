@@ -5,8 +5,7 @@
 			"controllers/portfolio.js",
 			"controllers/register.js",
 			"controllers/login.js",
-			"services/user.js",
-			"services/flash.js"
+			"services/user.js"
 		],
 		"styles": [
 			""

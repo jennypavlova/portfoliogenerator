@@ -1,15 +1,15 @@
 <div class="col-md-6 col-md-offset-3">
     <h2>Register</h2>
     <form name="form" ng-submit="vm.register()" action="/api/register" method="post" role="form">
-        <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+        <div class="form-group" ng-class="{ 'has-error': form.first.$dirty && form.first.$error.required }">
             <label for="username">First name</label>
-            <input type="text" name="firstName" id="firstName" class="form-control" ng-model="vm.user.firstName" required />
-            <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First name is required</span>
+            <input type="text" name="first" id="first" class="form-control" ng-model="vm.user.first" required />
+            <span ng-show="form.first.$dirty && form.first.$error.required" class="help-block">First name is required</span>
         </div>
-        <div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+        <div class="form-group" ng-class="{ 'has-error': form.last.$dirty && form.last.$error.required }">
             <label for="username">Last name</label>
-            <input type="text" name="lastName" id="Text1" class="form-control" ng-model="vm.user.lastName" required />
-            <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last name is required</span>
+            <input type="text" name="last" id="Text1" class="form-control" ng-model="vm.user.last" required />
+            <span ng-show="form.last.$dirty && form.last.$error.required" class="help-block">Last name is required</span>
         </div>
         <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
             <label for="username">Username</label>
