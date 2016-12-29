@@ -3,7 +3,7 @@
 
     <!-- HEADER AND TODO COUNT -->
     <div class="jumbotron text-center">
-        <h1>I'm a Projects-aholic <span class="label label-info">{{portfolio.length}}</span></h1>
+        <h1>My Projects <span class="label label-info">{{portfolio.length}}</span></h1>
     </div>
 
     <!-- TODO LIST -->
@@ -13,7 +13,7 @@
             <!-- LOOP OVER THE projects IN $scope.portfolio -->
             <div class="checkbox" ng-repeat="project in portfolio">
                 <label>
-                    <input type="checkbox" ng-click="deletePortfolio(project._id)"> {{ project.project }}
+                    <input type="checkbox" ng-click="deletePortfolio(project._id)"> {{ portfolio.project }}
                 </label>
             </div>
 
@@ -21,17 +21,29 @@
     </div>
 
     <!-- FORM TO CREATE PROJECTS -->
+
     <div id="todo-form" class="row">
         <div class="col-sm-8 col-sm-offset-2 text-center">
-            <form>
+           <form name="form" ng-submit="vm.portfolio()" role="form">
                 <div class="form-group">
 
                     <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                    <input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever" ng-model="formData.text">
+                    <label for="name">Project's name:</label>
+                    <input type="text" class="form-control input-lg text-center" placeholder="Project's name" ng-model="vm.project.name">
+                    <label for="companyName">Company's name:</label>
+                    <input type="text" class="form-control input-lg text-center" placeholder="Project's company name" ng-model="vm.project.companyName">
+                    <label for="fromDate">From:</label>
+                    <input type="date" class="form-control input-lg text-center"  ng-model="vm.project.duration.fromDate">
+                    <label for="endDate">To:</label>
+                    <input type="date" class="form-control input-lg text-center" ng-model="vm.project.duration.endDate">
+                    <label for="description">Project's description:</label>
+                    <input type="text" class="form-control input-lg text-center" placeholder="Project's description" ng-model="vm.project.description">
+                    <label for="technologies">Project's technologies:</label>
+                    <input type="text" class="form-control input-lg text-center" placeholder="Project's technologies" ng-model="vm.project.technologies">
                 </div>
 
-                <!-- createToDo() WILL CREATE NEW TODOS -->
-                <button type="submit" class="btn btn-primary btn-lg" ng-click="createPortfolio()">Add</button>
+                <!-- portfolio() WILL CREATE NEW TODOS -->
+                <button type="submit" class="btn btn-primary btn-lg">Add</button>
             </form>
         </div>
     </div>
