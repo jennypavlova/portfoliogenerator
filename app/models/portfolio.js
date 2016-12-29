@@ -4,11 +4,11 @@ var portfolioschema = mongoose.Schema({
     project : {
     	name: {
     		type: String,
-    		required: true
+    		// required: true
     	},
     	companyName: {
     		type: String,
-    		required: true
+    		// required: true
     	},
     	projectDescription: String,
     	duration: {
