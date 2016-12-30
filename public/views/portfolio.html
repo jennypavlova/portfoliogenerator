@@ -7,18 +7,32 @@
     </div>
 
     <!-- TODO LIST -->
-    <div id="todo-list" class="row">
-        <div class="col-sm-4 col-sm-offset-4">
-
-            <!-- LOOP OVER THE portfolios IN $scope.portfolios -->
-            <div class="checkbox" ng-repeat="portfolio in portfolios">
-                <label>
-                    <input type="checkbox" ng-click="deletePortfolio(portfolio._id)"> {{ portfolio.project }}
-                </label>
+    <div class="row">
+        <!-- LOOP OVER THE portfolios IN $scope.portfolios -->
+        <div class="col-md-6" ng-repeat="portfolio in portfolios">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h3 class="panel-title">Project name : {{ portfolio.project.name }}</h3>
+              </div>
+              <div class="panel-body">
+                <div>
+                    <b>Company name:</b> {{ portfolio.project.companyName }}
+                </div>
+                <div>
+                  <span><b>Start:</b> {{ portfolio.project.duration.startDate }} <b>End:</b>{{ portfolio.project.duration.endDate }}</span>
+                </div>
+                <div>
+                   <b>Description:</b> {{ portfolio.project.description }}
+                </div>
+                <div>
+                   <b>Technologies:</b> {{ portfolio.project.technologies }}
+                </div>
+              </div>
             </div>
-
+            <button class="btn btn-danger btn-lg" ng-click="deletePortfolio(portfolio._id)">Delete</button>
         </div>
     </div>
+
 
     <!-- FORM TO CREATE portfolio -->
 
