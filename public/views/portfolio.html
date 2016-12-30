@@ -3,46 +3,45 @@
 
     <!-- HEADER AND TODO COUNT -->
     <div class="jumbotron text-center">
-        <h1>My Projects <span class="label label-info">{{portfolio.length}}</span></h1>
+        <h1>My Portfolios <span class="label label-info">{{portfolios.length}}</span></h1>
     </div>
 
     <!-- TODO LIST -->
     <div id="todo-list" class="row">
         <div class="col-sm-4 col-sm-offset-4">
 
-            <!-- LOOP OVER THE projects IN $scope.portfolio -->
-            <div class="checkbox" ng-repeat="project in portfolio">
+            <!-- LOOP OVER THE portfolios IN $scope.portfolios -->
+            <div class="checkbox" ng-repeat="portfolio in portfolios">
                 <label>
-                    <input type="checkbox" ng-click="deletePortfolio(project._id)"> {{ portfolio.project }}
+                    <input type="checkbox" ng-click="deletePortfolio(portfolio._id)"> {{ portfolio.project }}
                 </label>
             </div>
 
         </div>
     </div>
 
-    <!-- FORM TO CREATE PROJECTS -->
+    <!-- FORM TO CREATE portfolio -->
 
     <div id="todo-form" class="row">
         <div class="col-sm-8 col-sm-offset-2 text-center">
-           <form name="form" ng-submit="vm.portfolio()" role="form">
+           <form name="form" ng-submit="createPortfolio()" role="form">
                 <div class="form-group">
 
                     <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
                     <label for="name">Project's name:</label>
-                    <input type="text" class="form-control input-lg text-center" placeholder="Project's name" ng-model="vm.project.name">
+                    <input type="text" class="form-control input-lg text-center" placeholder="Project's name" ng-model="newPortfolio.name">
                     <label for="companyName">Company's name:</label>
-                    <input type="text" class="form-control input-lg text-center" placeholder="Project's company name" ng-model="vm.project.companyName">
-                    <label for="fromDate">From:</label>
-                    <input type="date" class="form-control input-lg text-center"  ng-model="vm.project.duration.fromDate">
-                    <label for="endDate">To:</label>
-                    <input type="date" class="form-control input-lg text-center" ng-model="vm.project.duration.endDate">
+                    <input type="text" class="form-control input-lg text-center" placeholder="Project's company name" ng-model="newPortfolio.companyName">
+                    <label for="startDate">Start:</label>
+                    <input type="date" class="form-control input-lg text-center"  ng-model="newPortfolio.duration.startDate">
+                    <label for="endDate">End:</label>
+                    <input type="date" class="form-control input-lg text-center" ng-model="newPortfolio.duration.endDate">
                     <label for="description">Project's description:</label>
-                    <input type="text" class="form-control input-lg text-center" placeholder="Project's description" ng-model="vm.project.description">
+                    <input type="text" class="form-control input-lg text-center" placeholder="Project's description" ng-model="newPortfolio.description">
                     <label for="technologies">Project's technologies:</label>
-                    <input type="text" class="form-control input-lg text-center" placeholder="Project's technologies" ng-model="vm.project.technologies">
+                    <input type="text" class="form-control input-lg text-center" placeholder="Project's technologies" ng-model="newPortfolio.technologies">
                 </div>
 
-                <!-- portfolio() WILL CREATE NEW TODOS -->
                 <button type="submit" class="btn btn-primary btn-lg">Add</button>
             </form>
         </div>

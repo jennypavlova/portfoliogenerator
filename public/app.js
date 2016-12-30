@@ -62,6 +62,7 @@ var app = angular.module('app', ['ngResource', 'ngRoute'])
       .when('/portfolio', {
         templateUrl: 'views/portfolio.html',
         controller: 'PortfolioCtrl',
+        controllerAs: 'vm'
         // resolve: {
         //   loggedin: checkLoggedin
         // }
