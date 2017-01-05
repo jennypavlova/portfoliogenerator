@@ -18,7 +18,7 @@ module.exports = function(router) {
         if (err) {
           return next(err);
         }
-        res.redirect('/login');
+        res.redirect('/#!/login');
         return next();
       });
   });
