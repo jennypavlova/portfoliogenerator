@@ -13,7 +13,7 @@ var app = angular.module('app', ['ngResource', 'ngRoute'])
       var deferred = $q.defer();
 
       // Make an AJAX call to check if the user is logged in
-      $http.get('/loggedin').success(function(user){
+      $http.get('api/loggedin').success(function(user){
         // Authenticated
         if (user !== '0')
           /*$timeout(deferred.resolve, 0);*/
@@ -24,7 +24,7 @@ var app = angular.module('app', ['ngResource', 'ngRoute'])
           $rootScope.message = 'You need to log in.';
           //$timeout(function(){deferred.reject();}, 0);
           deferred.reject();
-          $location.url('/login');
+          $location.url('!#/login');
         }
       });
 
@@ -62,10 +62,13 @@ var app = angular.module('app', ['ngResource', 'ngRoute'])
       .when('/portfolio', {
         templateUrl: 'views/portfolio.html',
         controller: 'PortfolioCtrl',
-        controllerAs: 'vm'
         // resolve: {
         //   loggedin: checkLoggedin
         // }
+      })
+      .when('/portfolio/preview', {
+        templateUrl: 'views/preview.html',
+        controller: 'PortfolioCtrl'
       })
       .when('/login', {
         templateUrl: 'views/login.html',
