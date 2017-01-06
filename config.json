@@ -2,13 +2,14 @@
 	"client": {
 		"title": "Portfolio app",
 		"scripts": [
+			"services/flash.js",
+			"services/user.js",
 			"controllers/portfolio.js",
 			"controllers/register.js",
-			"controllers/login.js",
-			"services/user.js"
+			"controllers/login.js"
 		],
 		"styles": [
-			""
+			"css/preview_style.css"
 		]
 	},
 	"server": {}
