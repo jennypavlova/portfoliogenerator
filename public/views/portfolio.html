@@ -5,7 +5,32 @@
     <div class="jumbotron text-center">
         <h1>My Portfolios <span class="label label-info">{{portfolios.length}}</span></h1>
     </div>
+        <!-- FORM TO CREATE portfolio -->
+    <button id="add-project" class="btn btn-primary btn-lg center" href="" ng-click="showme=true">Add project</a></button>
+    <div ng-show="showme" class="row">
+        <h2 class="col-sm-8 col-sm-offset-2 text-center" id="close" ng-click="showme=false">X</h2>
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+           <form name="form" ng-submit="createPortfolio()" role="form">
+                <div class="form-group">
+                    <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                    <label for="name">Project's name:</label>
+                    <input type="text" class="form-control input-lg text-center" placeholder="Project's name" ng-model="newPortfolio.name">
+                    <label for="companyName">Company's name:</label>
+                    <input type="text" class="form-control input-lg text-center" placeholder="Project's company name" ng-model="newPortfolio.companyName">
+                    <label for="startDate">Start:</label>
+                    <input type="date" class="form-control input-lg text-center"  ng-model="newPortfolio.duration.startDate">
+                    <label for="endDate">End:</label>
+                    <input type="date" class="form-control input-lg text-center" ng-model="newPortfolio.duration.endDate">
+                    <label for="description">Project's description:</label>
+                    <input type="text" class="form-control input-lg text-center" placeholder="Project's description" ng-model="newPortfolio.description">
+                    <label for="technologies">Project's technologies:</label>
+                    <input type="text" class="form-control input-lg text-center" placeholder="Project's technologies" ng-model="newPortfolio.technologies">
+                </div>
 
+                <button type="submit" class="btn btn-primary btn-lg">Add</button>
+            </form>
+        </div>
+    </div>
     <!-- TODO LIST -->
     <div class="row">
         <!-- LOOP OVER THE portfolios IN $scope.portfolios -->
@@ -34,31 +59,6 @@
     </div>
 
 
-    <!-- FORM TO CREATE portfolio -->
 
-    <div id="todo-form" class="row">
-        <div class="col-sm-8 col-sm-offset-2 text-center">
-           <form name="form" ng-submit="createPortfolio()" role="form">
-                <div class="form-group">
-
-                    <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                    <label for="name">Project's name:</label>
-                    <input type="text" class="form-control input-lg text-center" placeholder="Project's name" ng-model="newPortfolio.name">
-                    <label for="companyName">Company's name:</label>
-                    <input type="text" class="form-control input-lg text-center" placeholder="Project's company name" ng-model="newPortfolio.companyName">
-                    <label for="startDate">Start:</label>
-                    <input type="date" class="form-control input-lg text-center"  ng-model="newPortfolio.duration.startDate">
-                    <label for="endDate">End:</label>
-                    <input type="date" class="form-control input-lg text-center" ng-model="newPortfolio.duration.endDate">
-                    <label for="description">Project's description:</label>
-                    <input type="text" class="form-control input-lg text-center" placeholder="Project's description" ng-model="newPortfolio.description">
-                    <label for="technologies">Project's technologies:</label>
-                    <input type="text" class="form-control input-lg text-center" placeholder="Project's technologies" ng-model="newPortfolio.technologies">
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-lg">Add</button>
-            </form>
-        </div>
-    </div>
 
 </div>
