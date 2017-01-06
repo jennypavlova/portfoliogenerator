@@ -3,10 +3,11 @@
 
     <!-- HEADER AND TODO COUNT -->
     <div class="jumbotron text-center">
-        <h1>My Portfolios <span class="label label-info">{{portfolios.length}}</span></h1>
+        <h1>My Portfolio has <span class="label label-info">{{portfolios.length}}</span> Projects</h1>
     </div>
         <!-- FORM TO CREATE portfolio -->
     <button id="add-project" class="btn btn-primary btn-lg center" href="" ng-click="showme=true">Add project</a></button>
+    <a href="#!/portfolio/preview" class="btn btn-link">Preview</a>
     <div ng-show="showme" class="row">
         <h2 class="col-sm-8 col-sm-offset-2 text-center" id="close" ng-click="showme=false">X</h2>
         <div class="col-sm-8 col-sm-offset-2 text-center">
@@ -34,7 +35,7 @@
     <!-- TODO LIST -->
     <div class="row">
         <!-- LOOP OVER THE portfolios IN $scope.portfolios -->
-        <div class="col-md-6" ng-repeat="portfolio in portfolios">
+        <div class="col-md-4" ng-repeat="portfolio in portfolios">
             <div class="panel panel-info">
               <div class="panel-heading">
                 <h3 class="panel-title">Project name : {{ portfolio.project.name }}</h3>
@@ -44,7 +45,7 @@
                     <b>Company name:</b> {{ portfolio.project.companyName }}
                 </div>
                 <div>
-                  <span><b>Start:</b> {{ portfolio.project.duration.startDate }} <b>End:</b>{{ portfolio.project.duration.endDate }}</span>
+                  <span><b>Start:</b> {{ portfolio.project.duration.startDate | date:'MM/dd/yyyy' }} <b>End:</b>{{ portfolio.project.duration.endDate | date:'MM/dd/yyyy' }}</span>
                 </div>
                 <div>
                    <b>Description:</b> {{ portfolio.project.description }}
@@ -55,9 +56,10 @@
               </div>
             </div>
             <button class="btn btn-danger btn-lg" ng-click="deletePortfolio(portfolio._id)">Delete</button>
+            <div class="clearfix"></div>
         </div>
     </div>
-
+    <a href="#!/portfolio/preview" class="btn btn-link">Preview</a>
 
 
 
