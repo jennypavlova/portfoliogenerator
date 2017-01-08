@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var portfolioschema = mongoose.Schema({
+var portfolioschema = new Schema({
+  user: { type: Schema.Types.ObjectId, ref: 'User'},
   project: {
     name: {
       type: String,

@@ -20,7 +20,7 @@
       $http.get('/api/portfolio')
       .then(function(res) {
         if (debug) console.log("GET /api/portfolio:", JSON.stringify(res.data, null, 2));
-        $scope.portfolios = res.data
+        $scope.portfolios = [res.data]
       }, function(err) {
         console.log('Error: ' + err);
       });

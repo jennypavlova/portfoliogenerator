@@ -9,10 +9,9 @@ module.exports = function(router) {
   // route to log in
   router.post('/login', passport.authenticate('local', {
     successRedirect: '/#!/portfolio',
-    failureRedirect: '/login',
+    failureRedirect: '/#!/login',
     failureFlash: false
   }));
-
   router.post('/register', function(req, res, next) {
       User.register(new User({ name:{first: req.body.first, last: req.body.last}, username : req.body.username }), req.body.password, function(err, user) {
         if (err) {
@@ -24,7 +23,7 @@ module.exports = function(router) {
   });
   // route to test if the user is logged in or not
   router.get('/loggedin', function(req, res) {
-    res.send(req.isAuthenticated() ? req.user : '0');
+    res.send(req.isAuthenticated() ? req.user : '0')
   });
   // route to log out
   router.post('/logout', function(req, res){

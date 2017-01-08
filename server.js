@@ -1,9 +1,9 @@
 // call the packages we need
-var express = require('express');        
+var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
 // log requests to the console (express4)
-var morgan = require('morgan'); 
+var morgan = require('morgan');
 // simulate DELETE and PUT (express4)
 var methodOverride = require('method-override');
 var path = require('path')
@@ -12,7 +12,7 @@ var config = require('./config.json')
 mongoose.connect('mongodb://127.0.0.1/users');
 
 // define our app using express
-var app = express();                 
+var app = express();
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
