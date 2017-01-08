@@ -9,8 +9,8 @@
     .module('app')
     .controller('PortfolioCtrl', PortfolioCtrl);
     function PortfolioCtrl($scope, $http) {
-      $scope.portfolios = []
-      $scope.newPortfolio = {}
+      $scope.projects = []
+      $scope.newProject = {}
 
       $scope.printPortfolioEntry = function(entry) {
         return JSON.stringify(entry)
@@ -20,29 +20,29 @@
       $http.get('/api/portfolio')
       .then(function(res) {
         if (debug) console.log("GET /api/portfolio:", JSON.stringify(res.data, null, 2));
-        $scope.portfolios = [res.data]
+        $scope.projects = res.data.projects
       }, function(err) {
         console.log('Error: ' + err);
       });
 
       // when submitting the add form, send the text to the node API
-      $scope.createPortfolio = function() {
-        $http.post('/api/portfolio', $scope.newPortfolio)
+      $scope.createProject = function() {
+        $http.post('/api/portfolio/project', $scope.newProject)
         .then(function(res) {
-          if (debug) console.log("POST /api/portfolio/", JSON.stringify(res.data, null, 2));
-          $scope.portfolios = res.data
-          $scope.newPortfolio = {}
+          if (debug) console.log("POST /api/portfolio/project", JSON.stringify(res.data, null, 2));
+          $scope.projects = res.data.projects
+          $scope.newProject = {}
         }, function(res) {
           console.log('Error: ' + res);
         });
       };
 
       // delete a todo after checking it
-      $scope.deletePortfolio = function(id) {
-        $http.delete('/api/portfolio/' + id)
+      $scope.deleteProject = function(id) {
+        $http.delete('/api/portfolio/project/' + id)
         .then(function(res) {
-          if (debug) console.log("DELETE /api/portfolio/" + id, JSON.stringify(res.data, null, 2));
-          $scope.portfolios = res.data
+          if (debug) console.log("DELETE /api/portfolio/projects/" + id, JSON.stringify(res.data, null, 2));
+          $scope.projects = res.data.projects
         }, function(res) {
           console.log('Error: ' + res);
         });

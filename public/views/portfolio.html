@@ -3,7 +3,7 @@
 
     <!-- HEADER AND TODO COUNT -->
     <div class="jumbotron text-center">
-        <h1>My Portfolio has <span class="label label-info">{{portfolios.length}}</span> Projects</h1>
+        <h1>My Portfolio has <span class="label label-info">{{projects.length}}</span> Projects</h1>
     </div>
         <!-- FORM TO CREATE portfolio -->
     <button id="add-project" class="btn btn-primary btn-lg center" href="" ng-click="showme=true">Add project</a></button>
@@ -11,21 +11,21 @@
     <div ng-show="showme" class="row">
         <h2 class="col-sm-8 col-sm-offset-2 text-center" id="close" ng-click="showme=false">X</h2>
         <div class="col-sm-8 col-sm-offset-2 text-center">
-           <form name="form" ng-submit="createPortfolio()" role="form">
+           <form name="form" ng-submit="createProject()" role="form">
                 <div class="form-group">
                     <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
                     <label for="name">Project's name:</label>
-                    <input type="text" class="form-control input-lg text-center" placeholder="Project's name" ng-model="newPortfolio.name">
+                    <input type="text" class="form-control input-lg text-center" placeholder="Project's name" ng-model="newProject.name">
                     <label for="companyName">Company's name:</label>
-                    <input type="text" class="form-control input-lg text-center" placeholder="Project's company name" ng-model="newPortfolio.companyName">
+                    <input type="text" class="form-control input-lg text-center" placeholder="Project's company name" ng-model="newProject.companyName">
                     <label for="startDate">Start:</label>
-                    <input type="date" class="form-control input-lg text-center"  ng-model="newPortfolio.duration.startDate">
+                    <input type="date" class="form-control input-lg text-center"  ng-model="newProject.duration.startDate">
                     <label for="endDate">End:</label>
-                    <input type="date" class="form-control input-lg text-center" ng-model="newPortfolio.duration.endDate">
+                    <input type="date" class="form-control input-lg text-center" ng-model="newProject.duration.endDate">
                     <label for="description">Project's description:</label>
-                    <input type="text" class="form-control input-lg text-center" placeholder="Project's description" ng-model="newPortfolio.description">
+                    <input type="text" class="form-control input-lg text-center" placeholder="Project's description" ng-model="newProject.description">
                     <label for="technologies">Project's technologies:</label>
-                    <input type="text" class="form-control input-lg text-center" placeholder="Project's technologies" ng-model="newPortfolio.technologies">
+                    <input type="text" class="form-control input-lg text-center" placeholder="Project's technologies" ng-model="newProject.technologies">
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-lg">Add</button>
@@ -35,27 +35,27 @@
     <!-- TODO LIST -->
     <div class="row">
         <!-- LOOP OVER THE portfolios IN $scope.portfolios -->
-        <div class="col-md-4" ng-repeat="portfolio in portfolios">
+        <div class="col-md-4" ng-repeat="project in projects">
             <div class="panel panel-info">
               <div class="panel-heading">
-                <h3 class="panel-title">Project name : {{ portfolio.project.name }}</h3>
+                <h3 class="panel-title">Project name : {{ project.name }}</h3>
               </div>
               <div class="panel-body">
                 <div>
-                    <b>Company name:</b> {{ portfolio.project.companyName }}
+                    <b>Company name:</b> {{ project.companyName }}
                 </div>
                 <div>
-                  <span><b>Start:</b> {{ portfolio.project.duration.startDate | date:'MM/dd/yyyy' }} <b>End:</b>{{ portfolio.project.duration.endDate | date:'MM/dd/yyyy' }}</span>
+                  <span><b>Start:</b> {{ project.duration.startDate | date:'MM/dd/yyyy' }} <b>End:</b>{{ project.duration.endDate | date:'MM/dd/yyyy' }}</span>
                 </div>
                 <div>
-                   <b>Description:</b> {{ portfolio.project.description }}
+                   <b>Description:</b> {{ project.description }}
                 </div>
                 <div>
-                   <b>Technologies:</b> {{ portfolio.project.technologies }}
+                   <b>Technologies:</b> {{ project.technologies }}
                 </div>
               </div>
             </div>
-            <button class="btn btn-danger btn-lg" ng-click="deletePortfolio(portfolio._id)">Delete</button>
+            <button class="btn btn-danger btn-lg" ng-click="deleteProject(project._id)">Delete</button>
             <div class="clearfix"></div>
         </div>
     </div>

@@ -1,46 +1,56 @@
 module.exports = function(router) {
 	//Model
-  var Portfolio = require("../models/portfolio")
+  var Project = require("../models/project")
 
   router.get('/portfolio', function(req, res) {
-    // use mongoose to get all portfolio in the database
-    Portfolio.findOne({'user': req.user.id}, function (err, portfolio) {
+    // use mongoose to get all projects in the database
+    Project.find({
+      'user': req.user.id
+    }, function (err, projects) {
       if (err) res.send(err)
-      console.log('GET /api/portfolio', JSON.stringify(portfolio,null,2), '\n', 'user:', req.user);
-      res.json(portfolio);
-    });
-  });
-
-  // create Portfolio and send back all portfolio after creation
-  router.post('/portfolio',
-    function(req, res) {
-  	console.log('body:', JSON.stringify(req.body))
-    // create a Portfolio, information comes from AJAX request from Angular
-    Portfolio.create({
-      project: req.body,
-      user: req.user.id
-    }, function(err, portfolio) {
-      if (err) res.send(err);
-      // get and return all the portfolio after you create another
-      Portfolio.find(function(err, portfolio) {
-        if (err) res.send(err)
-        res.json(portfolio);
+      console.log('GET /api/portfolio', JSON.stringify(projects, null, 2), '\n', 'user:', req.user);
+      res.json({
+        user: req.user,
+        projects: projects
       });
     });
   });
 
-  // delete a portfolio
-  router.delete('/portfolio/:portfolio_id', function(req, res) {
-    Portfolio.remove({
-      _id : req.params.portfolio_id,
-      user: req.user.id
-    }, function(err, portfolio) {
+  router.post('/portfolio/project', function(req, res) {
+    req.body.user = req.user.id
+    Project.create(req.body, function(err, project) {
       if (err) res.send(err);
 
-      // get and return all the portfolio after you create another
-      Portfolio.find(function(err, portfolio) {
+      Project.find({
+        'user': req.user.id
+      },function (err, projects) {
         if (err) res.send(err)
-        res.json(portfolio);
+
+        res.json({
+          user: req.user,
+          projects: projects
+        });
+      });
+    });
+  });
+
+  // delete a project
+  router.delete('/portfolio/project/:project_id', function(req, res) {
+    Project.remove({
+      _id: req.params.project_id,
+      user: req.user.id
+    }, function(err) {
+      if (err) res.send(err);
+
+      Project.find({
+        'user': req.user.id
+      },function (err, projects) {
+        if (err) res.send(err)
+
+        res.json({
+          user: req.user,
+          projects: projects
+        });
       });
     });
   });
