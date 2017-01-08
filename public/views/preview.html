@@ -10,29 +10,29 @@
         </section><!--//section-->
         <section class="section experiences-section">
             <h2 class="section-title"><i class="glyphicon glyphicon-folder-open"></i> Projects</h2>
-            <div ng-repeat="portfolio in portfolios">
+            <div ng-repeat="project in projects">
               <div class="item">
                   <div class="meta">
                       <div class="upper-row">
-                          <h3 class="job-title"> {{ portfolio.project.name }}</h3>
-                          <div class="time">{{ portfolio.project.duration.startDate | date:'MM/dd/yyyy' }} - {{ portfolio.project.duration.endDate | date:'MM/dd/yyyy' }}</div>
+                          <h3 class="job-title"> {{ project.name }}</h3>
+                          <div class="time">{{ project.duration.startDate | date:'MM/dd/yyyy' }} - {{ project.duration.endDate | date:'MM/dd/yyyy' }}</div>
                       </div><!--//upper-row-->
-                      <div class="company">{{ portfolio.project.companyName }}</div>
+                      <div class="company">{{ project.companyName }}</div>
                   </div><!--//meta-->
                   <div class="details">
-                      {{ portfolio.project.description }}
+                      {{ project.description }}
                       <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
                   </div><!--//details-->
               </div><!--//item-->
             </div>
         </section><!--//section-->
         <section class="skills-section section">
-            <h2 class="section-title"><i class="glyphicon glyphicon-wrench"></i> Technologies</h2>
-          <div ng-repeat="portfolio in portfolios">
+            <h2 class="section-title"><i class="glyphicon glyphicon-wrench"></i> Technologies used</h2>
+          <div ng-repeat="project in projects">
             <div class="skillset">
                 <div class="item">
-                <h3 class="level-title"> {{ portfolio.project.name }} :</h3>
-                    <h3 class="level-title"> {{ portfolio.project.technologies }}</h3>
+                <h3 class="level-title"> {{ project.name }} :</h3>
+                    <h3 class="level-title"> {{ project.technologies }}</h3>
                 </div><!--//item-->
               </div>
             </div>
