@@ -51,9 +51,18 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#!/login">Login</a></li>
-                <li><a href="#!/portfolio">Portfolio</a></li>
+                <li ng-if="!userLoggedIn" ng-class="{active: isActive('/login')}">
+                    <a href="#!/login">Login</a>
+                </li>
+                <li ng-if="!userLoggedIn" ng-class="{active: isActive('/register')}">
+                    <a href="#!/register">Register</a>
+                </li>
+                <li ng-if="userLoggedIn" ng-class="{active: isActive('/portfolio')}">
+                    <a href="#!/portfolio">Portfolio</a>
+                </li>
+                <li ng-if="userLoggedIn">
+                    <a href="" ng-click="logout()">Logout</a>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div>

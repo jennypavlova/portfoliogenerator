@@ -17,10 +17,12 @@ var app = angular.module('app', ['ngResource', 'ngRoute'])
         var user = res.data
         // Authenticated
         if (user !== '0') {
+          $rootScope.userLoggedIn = true
           /*$timeout(deferred.resolve, 0);*/
           deferred.resolve();
         // Not Authenticated
         } else {
+          $rootScope.userLoggedIn = false
           $rootScope.message = 'You need to log in.';
           //$timeout(function(){deferred.reject();}, 0);
           deferred.reject();
@@ -84,12 +86,19 @@ var app = angular.module('app', ['ngResource', 'ngRoute'])
     //================================================
 
   }) // end of config()
-  .run(function($rootScope, $http){
+  .run(function($location, $rootScope, $http){
     $rootScope.message = '';
+    $rootScope.userLoggedIn = false;
+
+    $rootScope.isActive = function (route) {
+      return route === $location.path();
+    }
 
     // Logout function is available in any pages
     $rootScope.logout = function(){
       $rootScope.message = 'Logged out.';
-      $http.post('/logout');
+      $rootScope.userLoggedIn = false;
+      $http.post('/api/logout');
+      $location.url('/');
     };
   });
