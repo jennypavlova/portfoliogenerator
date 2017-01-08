@@ -54,10 +54,13 @@ var app = angular.module('app', ['ngResource', 'ngRoute'])
     // Define all the routes
     //================================================
     $routeProvider
-      .when('/', {
+      .when('/register', {
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl',
         controllerAs: 'vm'
+      })
+      .when('/', {
+        templateUrl: 'views/home.html'
       })
       .when('/portfolio', {
         templateUrl: 'views/portfolio.html',
