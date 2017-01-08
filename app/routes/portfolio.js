@@ -1,8 +1,15 @@
 module.exports = function(router) {
-	//Model
   var Project = require("../models/project")
 
-  router.get('/portfolio', function(req, res) {
+  var allowAuthenticate = function(req, res, next) {
+    if (!req.isAuthenticated()) {
+      res.status(401)
+      return next(new Error('401'))
+    }
+    return next()
+  }
+
+  router.get('/portfolio', allowAuthenticate, function(req, res) {
     // use mongoose to get all projects in the database
     Project.find({
       'user': req.user.id
@@ -16,7 +23,7 @@ module.exports = function(router) {
     });
   });
 
-  router.post('/portfolio/project', function(req, res) {
+  router.post('/portfolio/project', allowAuthenticate, function(req, res) {
     req.body.user = req.user.id
     Project.create(req.body, function(err, project) {
       if (err) res.send(err);
@@ -35,7 +42,7 @@ module.exports = function(router) {
   });
 
   // delete a project
-  router.delete('/portfolio/project/:project_id', function(req, res) {
+  router.delete('/portfolio/project/:project_id', allowAuthenticate, function(req, res) {
     Project.remove({
       _id: req.params.project_id,
       user: req.user.id
