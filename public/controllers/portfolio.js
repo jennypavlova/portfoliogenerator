@@ -20,7 +20,7 @@
       $http.get('/api/portfolio')
       .then(function(res) {
         if (debug) console.log("GET /api/portfolio:", JSON.stringify(res.data, null, 2));
-        $scope.projects = res.data.projects
+        $scope.portfolio = res.data
       }, function(err) {
         console.log('Error: ' + err);
       });
@@ -30,7 +30,7 @@
         $http.post('/api/portfolio/project', $scope.newProject)
         .then(function(res) {
           if (debug) console.log("POST /api/portfolio/project", JSON.stringify(res.data, null, 2));
-          $scope.projects = res.data.projects
+          $scope.portfolio = res.data
           $scope.newProject = {}
         }, function(res) {
           console.log('Error: ' + res);
@@ -42,7 +42,7 @@
         $http.delete('/api/portfolio/project/' + id)
         .then(function(res) {
           if (debug) console.log("DELETE /api/portfolio/projects/" + id, JSON.stringify(res.data, null, 2));
-          $scope.projects = res.data.projects
+          $scope.portfolio = res.data
         }, function(res) {
           console.log('Error: ' + res);
         });

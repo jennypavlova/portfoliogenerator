@@ -1,3 +1,5 @@
+// /public/controlllers/register.js
+// Register controller
 (function () {
     'use strict';
 

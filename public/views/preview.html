@@ -2,15 +2,15 @@
         <section class="section summary-section">
             <h2 class="section-title"><i class="glyphicon glyphicon-user"></i> User Profile</h2>
             <div class="summary">
-                <p>First name</p>
-                <p>Last name</p>
-                <p>Email</p>
-                <p>Phone</p>
+                <p>First name: {{ portfolio.user.name.first }}</p>
+                <p>Last name: {{ portfolio.user.name.last }}</p>
+                <p>Email {{ portfolio.user.email }}</p>
+                <p>Phone {{ portfolio.user.mobileNumber }}</p>
             </div><!--//summary-->
         </section><!--//section-->
         <section class="section experiences-section">
             <h2 class="section-title"><i class="glyphicon glyphicon-folder-open"></i> Projects</h2>
-            <div ng-repeat="project in projects">
+            <div ng-repeat="project in portfolio.projects">
               <div class="item">
                   <div class="meta">
                       <div class="upper-row">
@@ -28,7 +28,7 @@
         </section><!--//section-->
         <section class="skills-section section">
             <h2 class="section-title"><i class="glyphicon glyphicon-wrench"></i> Technologies used</h2>
-          <div ng-repeat="project in projects">
+          <div ng-repeat="project in portfolio.projects">
             <div class="skillset">
                 <div class="item">
                 <h3 class="level-title"> {{ project.name }} :</h3>

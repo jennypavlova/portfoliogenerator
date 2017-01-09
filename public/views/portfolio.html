@@ -3,7 +3,7 @@
 
     <!-- HEADER AND TODO COUNT -->
     <div class="jumbotron text-center">
-        <h1>My Portfolio has <span class="label label-info">{{projects.length}}</span> Projects</h1>
+        <h1>My Portfolio has <span class="label label-info">{{portfolio.projects.length}}</span> Projects</h1>
     </div>
         <!-- FORM TO CREATE portfolio -->
     <button id="add-project" class="btn btn-primary btn-lg center" href="" ng-click="showme=true">Add project</a></button>
@@ -35,7 +35,7 @@
     <!-- TODO LIST -->
     <div class="row">
         <!-- LOOP OVER THE portfolios IN $scope.portfolios -->
-        <div class="col-md-4" ng-repeat="project in projects">
+        <div class="col-md-4" ng-repeat="project in portfolio.projects">
             <div class="panel panel-info">
               <div class="panel-heading">
                 <h3 class="panel-title">Project name : {{ project.name }}</h3>
@@ -59,8 +59,4 @@
             <div class="clearfix"></div>
         </div>
     </div>
-    <a href="#!/portfolio/preview" class="btn btn-link">Preview</a>
-
-
-
 </div>

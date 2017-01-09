@@ -13,7 +13,17 @@ module.exports = function(router) {
     failureFlash: false
   }));
   router.post('/register', function(req, res, next) {
-      User.register(new User({ name:{first: req.body.first, last: req.body.last}, username : req.body.username }), req.body.password, function(err, user) {
+      User.register(new User({
+        name:{
+          first: req.body.first,
+          last: req.body.last
+        },
+        username : req.body.username,
+        email: req.body.email,
+        mobileNumber: req.body.mobileNumber
+        }),
+        req.body.password,
+         function(err, user) {
         if (err) {
           return next(err);
         }
